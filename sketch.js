@@ -33,11 +33,15 @@ function receiveSerial() {
 
   // use data to update project variables
   if (d2.isPressed) {
-    player.velocity.x = -5;
+    left = true;
+  } else {
+    left = false;
   }
 
   if (d3.isPressed) {
-    player.velocity.x = 5;
+    right = true;
+  } else {
+    right = false;
   }
 
   // serial update
