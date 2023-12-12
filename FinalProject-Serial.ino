@@ -18,6 +18,7 @@ void sendData() {
   D2["isPressed"] = d2Val;
   D3["isPressed"] = d3Val;
   D2["count"] = d2ClickCount;
+  D3["count"] = d3ClickCount;
 
   String resTxt = "";
   serializeJson(resJson, resTxt);
