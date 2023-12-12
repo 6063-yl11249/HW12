@@ -1,20 +1,22 @@
 #include <ArduinoJson.h>
 
 // project variables
-int a0Val = 0;
 int d2Val = 0;
+int d3Val = 0;
 int d2ClickCount = 0;
+int d3ClickCount = 0;
 
 int prevD2Val = 0;
+int prevD3Val = 0;
 
 void sendData() {
   StaticJsonDocument<128> resJson;
   JsonObject data = resJson.createNestedObject("data");
-  JsonObject A0 = data.createNestedObject("A0");
   JsonObject D2 = data.createNestedObject("D2");
+  JsonObject D3 = data.createNestedObject("D3");
 
-  A0["value"] = a0Val;
   D2["isPressed"] = d2Val;
+  D3["isPressed"] = d3Val;
   D2["count"] = d2ClickCount;
 
   String resTxt = "";
@@ -31,15 +33,20 @@ void setup() {
 
 void loop() {
   // read pins
-  a0Val = analogRead(A0);
   d2Val = digitalRead(2);
+  d3Val = digitalRead(3);
 
   // calculate if d2 was clicked
   if (d2Val && d2Val != prevD2Val) {
     d2ClickCount++;
   }
 
+   if (d3Val && d3Val != prevD3Val) {
+    d3ClickCount++;
+  }
+
   prevD2Val = d2Val;
+  prevD3Val = d3Val;
 
   // check if there was a request for data, and if so, send new data
   if (Serial.available() > 0) {
