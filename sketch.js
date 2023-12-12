@@ -25,7 +25,8 @@ function receiveSerial() {
     readyToReceive = true;
     return;
   }
-
+  
+  print(line);
   // get data from Serial string
   let data = JSON.parse(line).data;
   let d2 = data.D2;

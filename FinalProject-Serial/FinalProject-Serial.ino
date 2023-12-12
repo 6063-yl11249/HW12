@@ -49,6 +49,7 @@ void loop() {
   prevD2Val = d2Val;
   prevD3Val = d3Val;
 
+  // Serial.println(String(d2Val) + " " + d3Val);
   // check if there was a request for data, and if so, send new data
   if (Serial.available() > 0) {
     int byteIn = Serial.read();
