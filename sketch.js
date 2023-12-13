@@ -26,7 +26,6 @@ function receiveSerial() {
     return;
   }
   
-  print(line);
   // get data from Serial string
   let data = JSON.parse(line).data;
   let d2 = data.D2;
@@ -60,7 +59,7 @@ function connectToSerial() {
 
 function setup() {
   // setup project
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(400, 600);
 
   // Initialize player as a square sprite
   player = createSprite(width / 2, height - 50, 50, 50);
